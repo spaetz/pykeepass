@@ -673,7 +673,7 @@ class PyKeePass:
 
 
         Returns:
-            `Group`: newly added group
+            `Entry`: newly added entry
         """
 
         entries = self.find_entries(
@@ -690,22 +690,22 @@ class PyKeePass:
                     title, destination_group
                 )
             )
-        else:
-            logger.debug('Creating a new entry')
-            entry = Entry(
-                title=title,
-                username=username,
-                password=password,
-                notes=notes,
-                otp=otp,
-                url=url,
-                tags=tags,
-                expires=True if expiry_time else False,
-                expiry_time=expiry_time,
-                icon=icon,
-                kp=self
-            )
-            destination_group.append(entry)
+
+        logger.debug('Creating a new entry')
+        entry = Entry(
+            title=title,
+            username=username,
+            password=password,
+            notes=notes,
+            otp=otp,
+            url=url,
+            tags=tags,
+            expires=True if expiry_time else False,
+            expiry_time=expiry_time,
+            icon=icon,
+            kp=self
+        )
+        destination_group.append(entry)
 
         return entry
 
